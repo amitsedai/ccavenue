@@ -122,9 +122,9 @@ function ccavenue_redirect_form($form, &$form_state, $order, $payment_method) {
  */
 function ccavenue_redirect_form_validate($order, $payment_method) {
   /* Hacks start here */
-  $workingKey='worqqevudiiu4xqpuq';		//Working Key should be provided here.
+  $working_key = $payment_method['settings']['working_key'];
   $encResponse=$_POST["encResponse"];			//This is the response sent by the CCAvenue Server
-  $rcvdString= _commerce_ccavenue_aes_decrypt($encResponse,$workingKey);		//AES Decryption used as per the specified working key.
+  $rcvdString= _commerce_ccavenue_aes_decrypt($encResponse,$working_key);		//AES Decryption used as per the specified working key.
   $AuthDesc="";
   $MerchantId="";
   $OrderId="";
